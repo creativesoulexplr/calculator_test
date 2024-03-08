@@ -16,7 +16,9 @@ class StringCalculatorService
     delimiter = ','
     if numbers.start_with?('//')
       custom_delimiter = numbers[2]
-      numbers = numbers.split("\n")[1]
+      numbers2 = numbers.split("\n")[1]
+      # handle auto string conversion \n to \\n
+      numbers = numbers2.nil? ? numbers.split('\\n')[1] : numbers2
       delimiter = custom_delimiter
     end
 

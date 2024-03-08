@@ -1,2 +1,21 @@
-<h1>StringCalculator#index</h1>
-<p>Find me in app/views/string_calculator/index.html.erb</p>
+<center>
+  <%= form_tag(calculate_path) do %>
+    <% if @scs.present? %>
+      <% @scs.errors.each do |error| %>
+        <p><%= error %></p>
+      <% end %>
+    <% end %>
+
+    <% if @result && @scs.errors.empty? %>
+      <p> Output is: <%=  @result %></p>
+    <% end %>
+    <div>
+      <%= label_tag 'numbers', 'Enter a Number:' %>
+      <%= text_field_tag :numbers, nil, class: 'form-control', value: @numbers %>
+    </div>
+
+    <div>
+      <%= submit_tag 'Submit', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</center>
